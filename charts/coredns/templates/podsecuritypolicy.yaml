@@ -7,6 +7,7 @@ apiVersion: extensions/v1beta1
 kind: PodSecurityPolicy
 metadata:
   name: {{ template "coredns.fullname" . }}
+  namespace: {{ .Release.Namespace }}
   labels: {{- include "coredns.labels" . | nindent 4 }}
 spec:
   privileged: false

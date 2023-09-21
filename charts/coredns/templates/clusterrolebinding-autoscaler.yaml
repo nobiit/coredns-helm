@@ -4,6 +4,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: {{ template "coredns.fullname" . }}-autoscaler
+  namespace: {{ .Release.Namespace }}
   labels: {{- include "coredns.labels.autoscaler" . | nindent 4 }}
 {{- if .Values.customLabels }}
 {{ toYaml .Values.customLabels | indent 4 }}

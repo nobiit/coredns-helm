@@ -5,6 +5,8 @@ metadata:
   name: {{ template "coredns.fullname" . }}
   {{- if .Values.prometheus.monitor.namespace }}
   namespace: {{ .Values.prometheus.monitor.namespace }}
+  {{- else }}
+  namespace: {{ .Release.Namespace }}
   {{- end }}
   labels: {{- include "coredns.labels" . | nindent 4 }}
     {{- if .Values.prometheus.monitor.additionalLabels }}
